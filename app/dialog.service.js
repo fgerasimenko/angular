@@ -6,14 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 const core_1 = require("@angular/core");
-let AppComponent = class AppComponent {
+let DialogService = class DialogService {
+    confirm(message) {
+        return new Promise(resolve => resolve(window.confirm(message || 'Confirmar?')));
+    }
 };
-AppComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'my-app',
-        templateUrl: 'app.component.html'
-    })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+DialogService = __decorate([
+    core_1.Injectable()
+], DialogService);
+exports.DialogService = DialogService;
+//# sourceMappingURL=dialog.service.js.map

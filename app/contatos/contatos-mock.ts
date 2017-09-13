@@ -1,4 +1,5 @@
-import { Contato } from './contatos.model'
+import { Contato } from './contato.model';
+
 export const CONTATOS: Contato[] = [
     {
         id:1, 
