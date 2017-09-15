@@ -15,8 +15,8 @@ import { ContatoService } from './contato.service';
         FormsModule
     ], 
     declarations:[
-        ContatoBuscaComponent,
         ContatosListaComponent,
+        ContatoBuscaComponent,
         ContatoDetalheComponent
     ],
     exports: [

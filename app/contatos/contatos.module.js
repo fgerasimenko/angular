@@ -23,8 +23,8 @@ ContatosModule = __decorate([
             forms_1.FormsModule
         ],
         declarations: [
-            contato_busca_component_1.ContatoBuscaComponent,
             contatos_lista_component_1.ContatosListaComponent,
+            contato_busca_component_1.ContatoBuscaComponent,
             contato_detalhe_component_1.ContatoDetalheComponent
         ],
         exports: [

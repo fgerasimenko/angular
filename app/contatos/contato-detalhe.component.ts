@@ -8,7 +8,8 @@ import { ContatoService } from './contato.service';
 @Component({
     moduleId: module.id,
     selector: 'contato-detalhe',
-    templateUrl: 'contato-detalhe.component.html'
+    templateUrl: 'contato-detalhe.component.html',
+    styleUrls: ['../app.css']
 })
 export class ContatoDetalheComponent implements OnInit{
 
@@ -33,7 +34,7 @@ export class ContatoDetalheComponent implements OnInit{
             if(id)
             {
                 this.isNew = false;
-                this.contatoService.getContato(id)
+                this.contatoService.find(id)
                 .then((contato: Contato) => this.contato = contato); 
             }
         });    
@@ -72,7 +73,7 @@ export class ContatoDetalheComponent implements OnInit{
             promise = this.contatoService.update(this.contato);
         }
 
-        promise.then(contato => goBack());
+        promise.then(contato => this.goBack());
     }
 
     

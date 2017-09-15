@@ -26,7 +26,7 @@
                                 <strong>Não há contatos na lista</strong>
                         </td>
                     <tr>
-                    <tr *ngFor="let c of contatos" [routerLink]="['/contato/save', c.id]">
+                    <tr class="cursor-pointer" *ngFor="let c of contatos" [routerLink]="['/contato/save', c.id]" >
                         <td>{{c.nome}}</td>
                         <td>{{c.email}}</td>
                         <td>{{c.telefone}}</td>
@@ -42,5 +42,4 @@
             <a href="#" class="btn btn-primary" routerLink="/contato/save">Novo Contato</a>
         </div>
     </div>
-    <contato-busca></contato-busca>
 </div>

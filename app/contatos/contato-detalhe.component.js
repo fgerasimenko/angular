@@ -26,7 +26,7 @@ let ContatoDetalheComponent = class ContatoDetalheComponent {
             let id = +params['id'];
             if (id) {
                 this.isNew = false;
-                this.contatoService.getContato(id)
+                this.contatoService.find(id)
                     .then((contato) => this.contato = contato);
             }
         });
@@ -56,14 +56,15 @@ let ContatoDetalheComponent = class ContatoDetalheComponent {
         else {
             promise = this.contatoService.update(this.contato);
         }
-        promise.then(contato => goBack());
+        promise.then(contato => this.goBack());
     }
 };
 ContatoDetalheComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'contato-detalhe',
-        templateUrl: 'contato-detalhe.component.html'
+        templateUrl: 'contato-detalhe.component.html',
+        styleUrls: ['../app.css']
     }),
     __metadata("design:paramtypes", [contato_service_1.ContatoService,
         router_1.ActivatedRoute,

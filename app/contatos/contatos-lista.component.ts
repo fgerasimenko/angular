@@ -9,6 +9,7 @@ import { DialogService } from './../dialog.service';
     moduleId: module.id,    
     selector: 'contatos-lista',
     templateUrl: 'contatos-lista.component.html',
+    styleUrls: ['../app.css']
 })
 
 export class ContatosListaComponent implements OnInit{
@@ -25,7 +26,7 @@ export class ContatosListaComponent implements OnInit{
 
     ngOnInit(): void
     {
-        this.contatoService.getContatos().then((contatos: Contato[])=>{
+        this.contatoService.findAll().then((contatos: Contato[])=>{
             this.contatos = contatos;
 
         }).catch(err => {

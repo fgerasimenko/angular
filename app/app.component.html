@@ -8,9 +8,11 @@
                 <a href="" class="nav-link" routerLink="/contato/save">Novo</a>
         </li>
         <form class="form-inline float-xs-right">
-            <input type="text" class="form-control" placeholder="Buscar">
-            <button class="btn btn-outline-success">Buscar</button>
+            <input type="text" class="form-control" placeholder="Buscar"
+                name="busca"
+                [(ngModel)]="termo">
         </form>
     </ul>
 </nav>
 <router-outlet></router-outlet>
+<contato-busca [(busca)]="termo"></contato-busca>

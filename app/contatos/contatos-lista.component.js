@@ -18,7 +18,7 @@ let ContatosListaComponent = class ContatosListaComponent {
         this.contatos = [];
     }
     ngOnInit() {
-        this.contatoService.getContatos().then((contatos) => {
+        this.contatoService.findAll().then((contatos) => {
             this.contatos = contatos;
         }).catch(err => {
             console.log('Aconteceu um erro: ', err);
@@ -78,6 +78,7 @@ ContatosListaComponent = __decorate([
         moduleId: module.id,
         selector: 'contatos-lista',
         templateUrl: 'contatos-lista.component.html',
+        styleUrls: ['../app.css']
     }),
     __metadata("design:paramtypes", [contato_service_1.ContatoService,
         dialog_service_1.DialogService])

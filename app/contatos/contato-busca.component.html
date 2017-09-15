@@ -5,12 +5,12 @@
             <div class="form-group">
                 <label for="search"></label>
                 <input type="search" class="form-control" placeholder="Busque um contato"
-                #searchBox
-                (keyup)="buscar(searchBox.value)" >                
+                    [ngModel]="busca"
+                    (ngModelChange)="buscar($event)" >                
             </div>
             <ul class="list-group">
-                <li class="list-group-item" *ngFor="let c of contatos | async">
-                   <a [routerLink]="['/contato/save', c.id]" >{{c.nome}}</a>
+                <li class="list-group-item cursor-pointer" *ngFor="let c of contatos | async" (click)="verDetalhe(c)" >
+                {{c.nome}}
                 </li>
             </ul>
         </div>   
