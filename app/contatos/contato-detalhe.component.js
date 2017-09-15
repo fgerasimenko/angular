@@ -45,6 +45,9 @@ let ContatoDetalheComponent = class ContatoDetalheComponent {
             'form-control-has-success': (isValid && !isPristine)
         };
     }
+    goBack() {
+        this.location.back();
+    }
     onSubmit() {
         let promise;
         if (this.isNew) {
@@ -53,7 +56,7 @@ let ContatoDetalheComponent = class ContatoDetalheComponent {
         else {
             promise = this.contatoService.update(this.contato);
         }
-        promise.then(contato => this.location.back());
+        promise.then(contato => goBack());
     }
 };
 ContatoDetalheComponent = __decorate([

@@ -12,6 +12,7 @@ const core_1 = require("@angular/core");
 const http_1 = require("@angular/http");
 require("rxjs/add/operator/toPromise");
 let ContatoService = class ContatoService {
+    //private contatosUrl:
     constructor(http) {
         this.http = http;
         this.apiUrl = 'app/contatos';
@@ -53,6 +54,11 @@ let ContatoService = class ContatoService {
     handleError(err) {
         console.log('Error:', err);
         return Promise.reject(err.message || err);
+    }
+    search(term) {
+        return this.http
+            .get(`${this.apiUrl}/?nome=${term}`)
+            .map((res) => res.json().data);
     }
 };
 ContatoService = __decorate([

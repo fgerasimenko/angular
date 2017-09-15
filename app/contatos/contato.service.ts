@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
+
 
 import { Contato } from './contato.model';
 import { CONTATOS } from './contatos-mock';
@@ -12,6 +14,7 @@ export class ContatoService
 {
     private apiUrl: string ='app/contatos';
     private headers: Headers = new Headers({'Content-Type': 'application/json'});
+    //private contatosUrl:
     constructor(
         private http: Http
     ){}
@@ -63,6 +66,13 @@ export class ContatoService
     {
         console.log('Error:', err);
         return Promise.reject(err.message || err);
+    }
+
+    search(term: string): Observable<Contato[]>
+    {
+        return this.http
+            .get(`${this.apiUrl}/?nome=${term}`)
+            .map((res: Response) => res.json().data as Contato[]);
     }
 //SIMULANDO CONEXÃO LENTA E CHAMADA DE PROMISES ENCADEADAS
 /*

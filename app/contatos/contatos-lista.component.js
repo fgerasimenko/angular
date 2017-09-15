@@ -15,12 +15,17 @@ let ContatosListaComponent = class ContatosListaComponent {
     constructor(contatoService, dialog) {
         this.contatoService = contatoService;
         this.dialog = dialog;
+        this.contatos = [];
     }
     ngOnInit() {
         this.contatoService.getContatos().then((contatos) => {
             this.contatos = contatos;
         }).catch(err => {
             console.log('Aconteceu um erro: ', err);
+            this.mostrarMensagem({
+                tipo: 'danger',
+                texto: 'Ocorreu um erro ao buscar a lista de contatos'
+            });
         });
     }
     onDelete(contato) {
@@ -33,10 +38,14 @@ let ContatosListaComponent = class ContatosListaComponent {
                     this.contatos = this.contatos.filter((c) => c.id != contato.id);
                     this.mostrarMensagem({
                         tipo: 'success',
-                        mensagem: 'Contato deletado com sucesso!'
+                        texto: 'Contato deletado com sucesso!'
                     });
                 }).catch(err => {
                     console.log(err);
+                    this.mostrarMensagem({
+                        tipo: 'danger',
+                        texto: 'Ocorreu um erro ao deletar contato' + contato.nome
+                    });
                 });
             }
             else {
@@ -46,9 +55,16 @@ let ContatosListaComponent = class ContatosListaComponent {
     mostrarMensagem(mensagem) {
         this.mensagem = mensagem;
         this.montarClasses(mensagem.tipo);
-        setTimeout(() => {
-            this.mensagem = undefined;
-        }, 3000);
+        if (mensagem.tipo != 'danger') {
+            if (this.currentTimeout) {
+                clearTimeout(this.currentTimeout);
+            }
+            else {
+                this.currentTimeout = setTimeout(() => {
+                    this.mensagem = undefined;
+                }, 3000);
+            }
+        }
     }
     montarClasses(tipo) {
         this.classesCSS = {
